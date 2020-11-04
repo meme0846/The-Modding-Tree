@@ -32,7 +32,7 @@ addLayer("t", {
         symbol: "T", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
         startData() { return {
-            unlocked: baseAmount().gt(2),
+            unlocked: this.baseAmount().gt(2),
 			points: new Decimal(0),
         }},
         color: "#4BDC13",
@@ -41,7 +41,7 @@ addLayer("t", {
         baseResource: "ranks", // Name of resource prestige is based on
         baseAmount() {return r.points}, // Get the current amount of baseResource
         type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-        exponent: 0.5, // Prestige currency exponent
+        exponent: 1, // Prestige currency exponent
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
             return mult
