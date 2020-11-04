@@ -26,13 +26,12 @@ addLayer("r", {
         ],
         layerShown(){return true},
 })
-
 addLayer("t", {
         name: "tiers", // This is optional, only used in a few places, If absent it just uses the layer id.
         symbol: "T", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
         startData() { return {
-            unlocked: this.baseAmount().gt(2),
+            unlocked: true,
 			points: new Decimal(0),
         }},
         color: "#4BDC13",
