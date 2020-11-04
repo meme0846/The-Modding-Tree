@@ -6,14 +6,14 @@ let modInfo = {
 	discordName: "",
 	discordLink: "",
 	changelogLink: "https://github.com/Acamaeda/The-Modding-Tree/blob/master/changelog.md",
-    offlineLimit: 1,  // In hours
+    offlineLimit: (1/60),  // In hours
     initialStartPoints: new Decimal (10) // Used for hard resets and new players
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
-	name: "Literally nothing",
+	num: "-1.0 Alpha",
+	name: "Not ready",
 }
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
@@ -48,7 +48,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.points.gte(new Decimal("1e1e9"))
 }
 
 
