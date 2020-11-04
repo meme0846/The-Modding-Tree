@@ -6,13 +6,13 @@ let modInfo = {
 	discordName: "",
 	discordLink: "",
 	changelogLink: "https://github.com/Acamaeda/The-Modding-Tree/blob/master/changelog.md",
-    offlineLimit: 0.0166666,  // In hours
+    offlineLimit: 1,  // In hours
     initialStartPoints: new Decimal (10) // Used for hard resets and new players
 }
 
 // Set your version in num and name
 let VERSION = {
-	num: "-1.0 Alpha",
+	num: "-0.9 Alpha",
 	name: "Not ready",
 }
 
