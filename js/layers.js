@@ -35,7 +35,7 @@ addLayer("t", {
 			points: new Decimal(0),
         }},
         color: "#4BDC13",
-        requires: Decimal.pow(this.points,2).add(2),//testing fffff // Can be a function that takes requirement increases into account
+        requires: this.points.times(this.points).add(2),//testing fffff // Can be a function that takes requirement increases into account
         resource: "tiers", // Name of prestige currency
         baseResource: "ranks", // Name of resource prestige is based on
         baseAmount() {return player.r.points}, // Get the current amount of baseResource
