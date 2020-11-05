@@ -35,6 +35,7 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (player.r.points.gte(2)) gain=gain.add(1)
 	return gain
 }
 
