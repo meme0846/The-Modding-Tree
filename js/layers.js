@@ -9,10 +9,11 @@ addLayer("r", {
         color: "#4BDC13",
         requires(){ player[this.layer].points.sub(1).pow(2)}, // Can be a function that takes requirement increases into account
         resource: "ranks", // Name of prestige currency
+	base: 2,
         baseResource: "distance", // Name of resource prestige is based on
         baseAmount() {return player.points}, // Get the current amount of baseResource
         type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-        exponent: 0.5, // Prestige currency exponent
+        exponent: 2, // Prestige currency exponent
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
             return mult
