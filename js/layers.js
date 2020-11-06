@@ -23,6 +23,7 @@ addLayer("r", {
 		exp=new Decimal(1)
 		if (player.t.points.gte(1)) exp = exp.times(4/3)
 		if (player.t.points.gte(3)) exp = exp.times(Decimal.pow(1.1,player.t.points))		
+		exp = exp.pow(2)
             return exp
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
