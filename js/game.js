@@ -185,7 +185,7 @@ function doReset(layer, force=false) {
 
 	prevOnReset = {...player} //Deep Copy
 	player.points = (row == 0 ? new Decimal(0) : getStartPoints())
-
+	if (tmp[layer].name=="ranks") player.r.time=new Decimal(0)
 	for (let x = row; x >= 0; x--) rowReset(x, layer)
 	rowReset("side", layer)
 	prevOnReset = undefined
