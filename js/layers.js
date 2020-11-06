@@ -21,7 +21,7 @@ addLayer("r", {
         },
         gainExp() { // Calculate the exponent on main currency from bonuses
 		exp=new Decimal(1)
-		if (player.t.points.gte(1)) exp = exp.times(4/3)
+		if (player.t.points.gte(1)) exp = exp.times(1.25)
 		if (player.t.points.gte(3)) exp = exp.times(Decimal.pow(1.1,player.t.points))		
             return exp
         },
