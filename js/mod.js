@@ -34,8 +34,7 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(1)
-	gain=gain.mul(player.r.time)
+	let gain = new Decimal(player.r.velocity)
 	if (player.r.points.gte(2)) gain=gain.add(1)
 	if (player.r.points.gte(3)) gain=gain.times(Decimal.pow(1.1, player.r.points.sub(1)))
 	if (player.r.points.gte(4)) gain=gain.times(Decimal.pow(3, player.t.points))
