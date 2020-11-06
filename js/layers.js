@@ -16,12 +16,14 @@ addLayer("r", {
         exponent: 2, // Prestige currency exponent
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
-		if (player.t.points.gte(1)) mult = mult.times(4/3)
-		if (player.t.points.gte(3)) mult = mult.times(Decimal.pow(1.1,player.t.points))
+
             return mult
         },
         gainExp() { // Calculate the exponent on main currency from bonuses
-            return new Decimal(1)
+		exp=new Decimal(1)
+		if (player.t.points.gte(1)) exp = exp.times(4/3)
+		if (player.t.points.gte(3)) exp = exp.times(Decimal.pow(1.1,player.t.points))		
+            return exp
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
         hotkeys: [
@@ -33,7 +35,7 @@ addLayer("t", {
         name: "tiers", // This is optional, only used in a few places, If absent it just uses the layer id.
         symbol: "T", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-	branches:["ranks"],
+	branches:["r"],
         startData() { return {
             unlocked: true,
 			points: new Decimal(0),
