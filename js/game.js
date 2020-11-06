@@ -44,8 +44,8 @@ function getNextAt(layer, canMax=false, useType = null) {
 	{
 		if (!tmp[layer].canBuyMax) canMax = false
 		let amt = player[layer].points.plus((canMax&&tmp[layer].baseAmount.gte(tmp[layer].nextAt))?tmp[layer].resetGain:0)
-		if (tmp[layer].name=="ranks") amt=amt.sub(1)
 		let extraCost = Decimal.pow(tmp[layer].base, amt.pow(tmp[layer].exponent).div(tmp[layer].gainExp)).times(tmp[layer].gainMult)
+		if (tmp[layer].name=="ranks") extraCost = Decimal.pow(tmp[layer].base, amt.div(tmp[layer].gainExp).sub(1).pow(tmp[layer].exponent))
 		let cost = extraCost.times(tmp[layer].requires).max(tmp[layer].requires)
 		if (tmp[layer].name=="tiers") cost = Decimal.pow(player[layer].points,2).add(3)
 		if (tmp[layer].roundUpCost) cost = cost.ceil()
