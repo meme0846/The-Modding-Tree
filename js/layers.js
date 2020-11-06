@@ -25,7 +25,7 @@ addLayer("r", {
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
         hotkeys: [
-            {key: "r", description: "RankReset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+            {key: "r", description: "Rank Reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
         layerShown(){return true},
 })
