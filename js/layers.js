@@ -5,6 +5,7 @@ addLayer("r", {
         startData() { return {
             unlocked: true,
 		points: new Decimal(1),
+		time: new Decimal(0),
         }},
         color: "#4BDC13",
         requires:10, // Can be a function that takes requirement increases into account
