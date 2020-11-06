@@ -31,6 +31,9 @@ addLayer("r", {
             {key: "r", description: "Rank Reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
         layerShown(){return true},
+	update(diff){
+	player.r.time=player.r.time.add(diff/1000);
+	},
 })
 addLayer("t", {
         name: "tiers", // This is optional, only used in a few places, If absent it just uses the layer id.
