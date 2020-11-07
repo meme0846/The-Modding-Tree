@@ -78,8 +78,8 @@ addLayer("a", {
             return ("Achievements")
         },
         achievements: {
-            rows: 3,
-            cols: 3,
+            rows: 4,
+            cols: 4,
             11: {
                 name: "Quick Sprint",
                 done() { return player.points.gte(100) },
