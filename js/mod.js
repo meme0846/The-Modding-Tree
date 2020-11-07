@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
-	name: "First build",
+	num: "0.1 test 1",
+	name: "Rockets",
 }
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
@@ -28,7 +28,10 @@ function getStartPoints(){
 function canGenPoints(){
 	return true
 }
-
+function getRocketEffect(){
+	let effect = new Decimal(player.ro.points).add(1).log(3)
+	return effect
+}
 // Calculate points/sec!
 function getPointGen() {
 	if(!canGenPoints())
@@ -65,6 +68,16 @@ function getPointGen() {
 	if (hasAchievement("a",22)) acceleration=acceleration.times(1.05)
 	if (hasAchievement("a",23)) acceleration=acceleration.times(1.2)
 	if (hasAchievement("a",32)) acceleration=acceleration.times(1.8)
+	if (hasAchievement("a",14)) {
+		acceleration=acceleration.times(1.5)
+		maxVelocity=maxVelocity.times(1.5)
+	}
+	if (hasAchievement("a",24)) maxVelocity=maxVelocity.times(1.25)
+	if (hasAchievement("a",41)) maxVelocity=maxVelocity.times(1.5)
+	if (player.ro.points.gt(0)) {
+		maxVelocity=maxVelocity.times(maxVelocity.add(1).log10().pow(getRocketEffect()).add(1))
+		acceleration=acceleration.times(acceleration.add(1).log10().pow(getRocketEffect()).add(1))
+	}
 	velocity = velocity.times(acceleration).min(maxVelocity)
 	return velocity
 }
@@ -79,7 +92,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("5e7"))
+	return player.points.gte(new Decimal("1e12"))
 }
 
 

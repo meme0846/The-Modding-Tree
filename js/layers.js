@@ -24,6 +24,7 @@ addLayer("r", {
 		exp=new Decimal(1)
 		if (player.t.points.gte(1)) exp = exp.times(1.25)
 		if (player.t.points.gte(3)) exp = exp.times(Decimal.pow(1.1,player.t.points))		
+		if (hasAchievement("a",43)) exp = exp.times(1.025)
             return exp
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -94,6 +95,11 @@ addLayer("a", {
                 done() { return player.t.points.gte(1) },
                 tooltip: "Tier up",
             },
+		14: {
+                name: "Off to Space!",
+                done() { return player.ro.points.gte(1) },
+                tooltip: "Rocket Reset",
+            },
 		21: {
                 name: "Driving for Hours",
                 done() { return player.points.gte(5e5) },
@@ -108,6 +114,11 @@ addLayer("a", {
                 name: "Three's the Lucky Number",
                 done() { return player.t.points.gte(3) },
                 tooltip: "Reach tier 3",
+            },
+		24: {
+                name: "Blastoff Again?",
+                done() { return player.ro.points.gte(2) },
+                tooltip: "Get 2 rockets",
             },
 		31: {
                 name: "Just Under a Saturn Revolution",
@@ -124,9 +135,67 @@ addLayer("a", {
                 done() { return player.t.points.gte(4) },
                 tooltip: "Reach tier 4",
             },
+		34: {
+                name: "Why fly once when you can fly ten times?",
+                done() { return player.ro.points.gte(10) },
+                tooltip: "Get 10 rockets",
+            },
+		41: {
+                name: "Parallax Time to the Tenth",
+                done() { return player.points.gte(3.086e16) },
+                tooltip: "Travel 1 parsec",
+            },
+		42: {
+                name: "Strong Winds",
+                done() { return player.r.points.gte(20) },
+                tooltip: "Reach rank 20",
+            },
+		43: {
+                name: "Like the drink",
+                done() { return player.t.points.gte(5) },
+                tooltip: "Reach tier 5",
+            },
+		44: {
+                name: "Now this is just pointless.",
+                done() { return player.ro.points.gte(100000) },
+                tooltip: "Get 1e5 rockets",
+            },
         },
         midsection: [
             "achievements",
         ]
     }, 
 )
+addLayer("ro", {
+        name: "rockets", // This is optional, only used in a few places, If absent it just uses the layer id.
+        symbol: "RO", // This appears on the layer's node. Default is the id with the first letter capitalized
+        position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+        startData() { return {
+            unlocked: false,
+		points: new Decimal(1),
+        }},
+        color: "#4BDC13",
+        requires:5e7, // Can be a function that takes requirement increases into account
+	branches:["t"],
+        resource: "rockets", // Name of prestige currency
+	base: 1,
+        baseResource: "distance", // Name of resource prestige is based on
+        baseAmount() {return player.points}, // Get the current amount of baseResource
+        type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+        exponent: new Decimal(5/24), // Prestige currency exponent
+        gainMult() { // Calculate the multiplier for main currency from bonuses
+            mult = new Decimal(1)
+		if (hasAchievement("a",34)) mult=mult.times(1.1)
+		if (hasAchievement("a",44)) mult=mult.times(1.15)
+            return mult
+        },
+        gainExp() { // Calculate the exponent on main currency from bonuses
+		exp=new Decimal(1)	
+            return exp
+        },
+        row: 2, // Row the layer is in on the tree (0 is the first row)
+        hotkeys: [
+            {key: "o", description: "Rocket Reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        ],
+        layerShown(){return (player.points.gte(5e7)||player.ro.points.gte(1))},
+})
