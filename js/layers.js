@@ -24,6 +24,7 @@ addLayer("r", {
 		exp=new Decimal(1)
 		if (player.t.points.gte(1)) exp = exp.times(1.25)
 		if (player.t.points.gte(3)) exp = exp.times(Decimal.pow(1.1,player.t.points))		
+		if (hasAchievement("a",43)) exp = exp.times(1.025)
             return exp
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -175,7 +176,7 @@ addLayer("ro", {
         }},
         color: "#4BDC13",
         requires:5e7, // Can be a function that takes requirement increases into account
-	branches:["t"]
+	branches:["t"],
         resource: "rockets", // Name of prestige currency
 	base: 1,
         baseResource: "distance", // Name of resource prestige is based on
@@ -184,7 +185,8 @@ addLayer("ro", {
         exponent: new Decimal(5/24), // Prestige currency exponent
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
-
+		if (hasAchievement("a",34)) mult=mult.times(1.1)
+		if (hasAchievement("a",44)) mult=mult.times(1.15)
             return mult
         },
         gainExp() { // Calculate the exponent on main currency from bonuses
