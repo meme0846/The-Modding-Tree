@@ -34,7 +34,7 @@ addLayer("r", {
 	update(diff){
 	player.r.time=player.r.time.add(diff)
 	},
-	//onReset() {player.r.time=new Decimal(0)},
+	onReset() {player.r.time=new Decimal(0)},
 })
 addLayer("t", {
         name: "tiers", // This is optional, only used in a few places, If absent it just uses the layer id.
