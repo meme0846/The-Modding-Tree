@@ -69,15 +69,15 @@ addLayer("t", {
 addLayer("a", {
         startData() { return {
             unlocked: true,
+			points: new Decimal(0),
         }},
-	type: "none",
         color: "yellow",
         row: "side",
         layerShown() {return true}, 
         tooltip() { // Optional, tooltip displays when the layer is locked
             return ("Achievements")
         },
-	achievements: {
+        achievements: {
             rows: 1,
             cols: 1,
             11: {
@@ -86,4 +86,8 @@ addLayer("a", {
                 tooltip: "Reach 100 distance",
             },
         },
-    })
+        midsection: [
+            "achievements",
+        ]
+    }, 
+)
