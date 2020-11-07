@@ -77,7 +77,7 @@ addLayer("a", {
             return ("Achievements")
         },
         achievements: {
-            rows: 2,
+            rows: 3,
             cols: 3,
             11: {
                 name: "Quick Sprint",
@@ -108,6 +108,21 @@ addLayer("a", {
                 name: "Three's the Lucky Number",
                 done() { return player.t.points.gte(3) },
                 tooltip: "Reach tier 3",
+            },
+		31: {
+                name: "Just Under a Saturn Revolution",
+                done() { return player.points.gte(1e12) },
+                tooltip: "Travel 1e12 meters",
+            },
+		32: {
+                name: "Putting in the Fake Fuel",
+                done() { return player.r.points.gte(12) },
+                tooltip: "Reach rank 12",
+            },
+		33: {
+                name: "IV test",
+                done() { return player.t.points.gte(4) },
+                tooltip: "Reach tier 4",
             },
         },
         midsection: [
