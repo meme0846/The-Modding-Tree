@@ -33,14 +33,32 @@ function canGenPoints(){
 function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
-
-	let gain = new Decimal(1)
-	if (player.r.points.gte(2)) gain=gain.add(1)
-	if (player.r.points.gte(3)) gain=gain.times(Decimal.pow(1.1, player.r.points.sub(1)))
-	if (player.r.points.gte(4)) gain=gain.times(Decimal.pow(3, player.t.points))
-	if (player.r.points.gte(5)) gain=gain.times(Decimal.pow(1.975, player.r.points.sub(1)))
-	if (player.t.points.gte(3) && player.r.points.gte(3)) gain=gain.times(5) 
-	return gain
+	let velocity = new Decimal(player.r.time)
+	let acceleration = new Decimal(0.1)
+	let maxVelocity=new Decimal(1)
+	if (player.r.points.gte(2)) maxVelocity=maxVelocity.add(1)
+	if (player.r.points.gte(3)) {
+		maxVelocity=maxVelocity.times(Decimal.pow(1.1, player.r.points.sub(1)))
+		acceleration=acceleration.times(Decimal.pow(1.1, player.r.points.sub(1)))
+	}
+	if (player.r.points.gte(4)){
+		acceleration = acceleration.times(2)
+	}
+	if (player.r.points.gte(5)) {
+		acceleration=acceleration.times(Decimal.pow(3, player.t.points))
+		maxVelocity=maxVelocity.times(Decimal.pow(3, player.t.points))
+	}
+	if (player.r.points.gte(6)) {
+		acceleration=acceleration.times(Decimal.pow(1.975, player.t.points))
+		maxVelocity=maxVelocity.times(Decimal.pow(1.975, player.t.points))
+	}
+	if (player.t.points.gte(1) && player.r.points.gte(3)){
+		acceleration=acceleration.times(2)
+		maxVelocity=maxVelocity.times(5)
+		
+	}
+	velocity = velocity.times(acceleration).min(maxVelocity)
+	return velocity
 }
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
