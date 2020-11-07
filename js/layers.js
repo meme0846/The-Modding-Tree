@@ -139,13 +139,13 @@ addLayer("ro", {
 		points: new Decimal(1),
         }},
         color: "#4BDC13",
-        requires:5e8, // Can be a function that takes requirement increases into account
+        requires:5e7, // Can be a function that takes requirement increases into account
         resource: "rockets", // Name of prestige currency
 	base: 1,
         baseResource: "distance", // Name of resource prestige is based on
         baseAmount() {return player.points}, // Get the current amount of baseResource
         type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-        exponent: 1, // Prestige currency exponent
+        exponent: new Decimal(5/24), // Prestige currency exponent
         gainMult() { // Calculate the multiplier for main currency from bonuses
             mult = new Decimal(1)
 
@@ -159,5 +159,5 @@ addLayer("ro", {
         hotkeys: [
             {key: "o", description: "Rocket Reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
-        layerShown(){return (player.points.gte(5e8)||player.ro.points.gte(1))},
+        layerShown(){return (player.points.gte(5e7)||player.ro.points.gte(1))},
 })
