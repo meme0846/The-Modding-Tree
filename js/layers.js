@@ -81,7 +81,7 @@ addLayer("a", {
             cols: 1,
             11: {
                 name: "Quick Sprint",
-                done() { return player.p.points.gte(100) },
+                done() { return player.points.gte(100) },
                 tooltip: "Reach 100 distance",
             },
         },
