@@ -85,4 +85,5 @@ addLayer("a", {
                 tooltip: "Reach 100 distance",
             },
         },
-    }, 
+    }
+)
