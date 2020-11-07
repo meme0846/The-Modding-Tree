@@ -101,7 +101,7 @@ addLayer("a", {
             },
 		22: {
                 name: "Oil change",
-                done() { return player.points.gte(8) },
+                done() { return player.r.points.gte(8) },
                 tooltip: "Reach rank 8",
             },
 		23: {
