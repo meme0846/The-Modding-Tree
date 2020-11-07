@@ -84,11 +84,6 @@ addLayer("a", {
                 done() { return player.points.gte(100) },
                 tooltip: "Reach 100 distance",
             },
-		12: {
-                name: "Better shoes",
-                done() { return player.points.gte(2) },
-                tooltip: "Rank up.",
-            },
         },
     }
 )
