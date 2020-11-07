@@ -69,8 +69,8 @@ function getPointGen() {
 	if (hasAchievement("a",23)) acceleration=acceleration.times(1.2)
 	if (hasAchievement("a",32)) acceleration=acceleration.times(1.8)
 	if (player.ro.points.gt(0)) {
-		maxVelocity=maxVelocity.times(maxVelocity.add(1).log10().pow(getRocketEffect()))
-		acceleration=acceleration.times(acceleration.add(1).log10().pow(getRocketEffect()))
+		maxVelocity=maxVelocity.times(maxVelocity.add(1).log10().pow(getRocketEffect()).add(1))
+		acceleration=acceleration.times(acceleration.add(1).log10().pow(getRocketEffect()).add(1))
 	}
 	velocity = velocity.times(acceleration).min(maxVelocity)
 	return velocity
