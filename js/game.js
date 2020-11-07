@@ -188,7 +188,7 @@ function doReset(layer, force=false) {
 	for (let x = row; x >= 0; x--) rowReset(x, layer)
 	rowReset("side", layer)
 	prevOnReset = undefined
-
+	if (tmp[layer].name=="ranks") player.r.time=new Decimal(0)
 	updateTemp()
 	updateTemp()
 }
