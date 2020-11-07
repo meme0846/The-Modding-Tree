@@ -45,12 +45,12 @@ function getPointGen() {
 		acceleration = acceleration.times(2)
 	}
 	if (player.r.points.gte(5)) {
-		acceleration=acceleration.times(Decimal.pow(3, player.t.points))
-		maxVelocity=maxVelocity.times(Decimal.pow(3, player.t.points))
+		acceleration=acceleration.times(Decimal.pow(3, player.r.points))
+		maxVelocity=maxVelocity.times(Decimal.pow(3, player.r.points))
 	}
 	if (player.r.points.gte(6)) {
-		acceleration=acceleration.times(Decimal.pow(1.975, player.t.points))
-		maxVelocity=maxVelocity.times(Decimal.pow(1.975, player.t.points))
+		acceleration=acceleration.times(Decimal.pow(1.975, player.r.points))
+		maxVelocity=maxVelocity.times(Decimal.pow(1.975, player.r.points))
 	}
 	if (player.t.points.gte(2) && player.r.points.gte(3)){
 		acceleration=acceleration.times(2)
