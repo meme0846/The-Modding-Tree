@@ -12,7 +12,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "-0.0.1 Alpha test 1",
+	num: "-0.0.1 Alpha test 2",
 	name: "Not ready",
 }
 
@@ -60,6 +60,10 @@ function getPointGen() {
 	if (player.t.points.gte(4)) acceleration=acceleration.times(3)
 	if (player.r.points.gte(9)) maxVelocity=maxVelocity.times(Decimal.pow(1.1, player.r.points))
 	if (player.r.points.gte(11)) acceleration=acceleration.times(2)
+	if (hasAchievement("a",12)) acceleration=acceleration.times(1.1)
+	if (hasAchievement("a",21)) maxVelocity=maxVelocity.times(1.1)
+	if (hasAchievement("a",22)) acceleration=acceleration.times(1.05)
+	if (hasAchievement("a",23)) acceleration=acceleration.times(1.2)
 	velocity = velocity.times(acceleration).min(maxVelocity)
 	return velocity
 }
