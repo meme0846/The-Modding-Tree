@@ -12,7 +12,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "-0.001 Alpha",
+	num: "-0.0001 Alpha",
 	name: "Not ready",
 }
 
