@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "-0.0.0 test 1",
-	name: "Not ready",
+	num: "0.0",
+	name: "First build",
 }
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
@@ -64,6 +64,7 @@ function getPointGen() {
 	if (hasAchievement("a",21)) maxVelocity=maxVelocity.times(1.1)
 	if (hasAchievement("a",22)) acceleration=acceleration.times(1.05)
 	if (hasAchievement("a",23)) acceleration=acceleration.times(1.2)
+	if (hasAchievement("a",32)) acceleration=acceleration.times(1.8)
 	velocity = velocity.times(acceleration).min(maxVelocity)
 	return velocity
 }
