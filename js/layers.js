@@ -94,6 +94,11 @@ addLayer("a", {
                 done() { return player.t.points.gte(1) },
                 tooltip: "Tier up",
             },
+		14: {
+                name: "Off to Space!",
+                done() { return player.ro.points.gte(1) },
+                tooltip: "Rocket Reset",
+            },
 		21: {
                 name: "Driving for Hours",
                 done() { return player.points.gte(5e5) },
@@ -109,6 +114,11 @@ addLayer("a", {
                 done() { return player.t.points.gte(3) },
                 tooltip: "Reach tier 3",
             },
+		24: {
+                name: "Blastoff Again?",
+                done() { return player.ro.points.gte(2) },
+                tooltip: "Get 2 rockets",
+            },
 		31: {
                 name: "Just Under a Saturn Revolution",
                 done() { return player.points.gte(1e12) },
@@ -123,6 +133,31 @@ addLayer("a", {
                 name: "IV test",
                 done() { return player.t.points.gte(4) },
                 tooltip: "Reach tier 4",
+            },
+		34: {
+                name: "Why fly once when you can fly ten times?",
+                done() { return player.ro.points.gte(10) },
+                tooltip: "Get 10 rockets",
+            },
+		41: {
+                name: "Parallax Time to the Tenth",
+                done() { return player.points.gte(3.086e16) },
+                tooltip: "Travel 1 parsec",
+            },
+		42: {
+                name: "Strong Winds",
+                done() { return player.r.points.gte(20) },
+                tooltip: "Reach rank 20",
+            },
+		43: {
+                name: "Like the drink",
+                done() { return player.t.points.gte(5) },
+                tooltip: "Reach tier 5",
+            },
+		44: {
+                name: "Now this is just pointless.",
+                done() { return player.ro.points.gte(100000) },
+                tooltip: "Get 1e5 rockets",
             },
         },
         midsection: [
