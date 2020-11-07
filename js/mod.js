@@ -12,7 +12,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "-0.0001 Alpha",
+	num: "-0.00001 Alpha",
 	name: "Not ready",
 }
 
@@ -38,19 +38,19 @@ function getPointGen() {
 	let maxVelocity=new Decimal(1)
 	if (player.r.points.gte(2)) maxVelocity=maxVelocity.add(1)
 	if (player.r.points.gte(3)) {
-		maxVelocity=maxVelocity.times(Decimal.pow(1.1, player.r.points.sub(1)))
-		acceleration=acceleration.times(Decimal.pow(1.1, player.r.points.sub(1)))
+		maxVelocity=maxVelocity.times(Decimal.pow(1.1, player.r.points))
+		acceleration=acceleration.times(Decimal.pow(1.1, player.r.points))
 	}
 	if (player.r.points.gte(4)){
 		acceleration = acceleration.times(2)
 	}
 	if (player.r.points.gte(5)) {
-		acceleration=acceleration.times(Decimal.pow(3, player.r.points.sub(1)))
-		maxVelocity=maxVelocity.times(Decimal.pow(3, player.r.points.sub(1)))
+		acceleration=acceleration.times(Decimal.pow(3, player.t.points))
+		maxVelocity=maxVelocity.times(Decimal.pow(3, player.t.points))
 	}
 	if (player.r.points.gte(6)) {
-		acceleration=acceleration.times(Decimal.pow(1.975, player.r.points.sub(1)))
-		maxVelocity=maxVelocity.times(Decimal.pow(1.975, player.r.points.sub(1)))
+		acceleration=acceleration.times(Decimal.pow(1.975, player.r.points))
+		maxVelocity=maxVelocity.times(Decimal.pow(1.975, player.r.points))
 	}
 	if (player.t.points.gte(2) && player.r.points.gte(3)){
 		acceleration=acceleration.times(2)
@@ -58,7 +58,7 @@ function getPointGen() {
 		
 	}
 	if (player.t.points.gte(4)) acceleration=acceleration.times(3)
-	if (player.r.points.gte(9)) maxVelocity=maxVelocity.times(Decimal.pow(1.1, player.r.points.sub(1)))
+	if (player.r.points.gte(9)) maxVelocity=maxVelocity.times(Decimal.pow(1.1, player.r.points))
 	if (player.r.points.gte(11)) acceleration=acceleration.times(2)
 	velocity = velocity.times(acceleration).min(maxVelocity)
 	return velocity
