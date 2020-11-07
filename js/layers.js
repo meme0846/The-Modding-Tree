@@ -69,7 +69,6 @@ addLayer("t", {
 addLayer("a", {
         startData() { return {
             unlocked: true,
-			points: new Decimal(0),
         }},
         color: "yellow",
         row: "side",
