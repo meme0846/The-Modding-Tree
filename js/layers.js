@@ -140,6 +140,7 @@ addLayer("ro", {
         }},
         color: "#4BDC13",
         requires:5e7, // Can be a function that takes requirement increases into account
+	branches:["t"]
         resource: "rockets", // Name of prestige currency
 	base: 1,
         baseResource: "distance", // Name of resource prestige is based on
