@@ -70,10 +70,20 @@ addLayer("a", {
         startData() { return {
             unlocked: true,
         }},
+	type: "none",
         color: "yellow",
         row: "side",
         layerShown() {return true}, 
         tooltip() { // Optional, tooltip displays when the layer is locked
             return ("Achievements")
+        },
+	achievements: {
+            rows: 1,
+            cols: 1,
+            11: {
+                name: "Quick Sprint",
+                done() { return player.points.gte(100) },
+                tooltip: "Reach 100 distance",
+            },
         },
     })
