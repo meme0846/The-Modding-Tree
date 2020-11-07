@@ -6,9 +6,6 @@ addLayer("r", {
             unlocked: true,
 		points: new Decimal(1),
 		time: new Decimal(0),
-		acceleration: new Decimal(0.1),
-		velocity: new Decimal(0),
-		maxVelocity: new Decimal(1),
         }},
         color: "#4BDC13",
         requires:10, // Can be a function that takes requirement increases into account
@@ -36,7 +33,6 @@ addLayer("r", {
         layerShown(){return true},
 	update(diff){
 	player.r.time=player.r.time.add(diff/1000)
-	player.r.velocity=player.r.time.mul(player.r.acceleration).min(player.r.maxVelocity)
 	},
 	onReset() {player.r.time=new Decimal(0)},
 })
