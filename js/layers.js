@@ -32,7 +32,7 @@ addLayer("r", {
         ],
         layerShown(){return true},
 	update(diff){
-	player.r.time=player.r.time.add(diff/1000)
+	player.r.time=player.r.time.add(diff)
 	},
 	//onReset() {player.r.time=new Decimal(0)},
 })
