@@ -77,12 +77,37 @@ addLayer("a", {
             return ("Achievements")
         },
         achievements: {
-            rows: 1,
-            cols: 1,
+            rows: 2,
+            cols: 3,
             11: {
                 name: "Quick Sprint",
                 done() { return player.points.gte(100) },
                 tooltip: "Reach 100 distance",
+            },
+		12: {
+                name: "Better Shoes",
+                done() { return player.r.points.gte(2) },
+                tooltip: "Rank up",
+            },
+		13: {
+                name: "Extreme Workout",
+                done() { return player.t.points.gte(1) },
+                tooltip: "Tier up",
+            },
+		21: {
+                name: "Driving for Hours",
+                done() { return player.points.gte(5e5) },
+                tooltip: "Travel 500 km",
+            },
+		22: {
+                name: "Oil change",
+                done() { return player.points.gte(8) },
+                tooltip: "Reach rank 8",
+            },
+		23: {
+                name: "Three's the Lucky Number",
+                done() { return player.t.points.gte(3) },
+                tooltip: "Reach tier 3",
             },
         },
         midsection: [
