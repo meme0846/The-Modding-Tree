@@ -78,11 +78,16 @@ addLayer("a", {
         },
         achievements: {
             rows: 1,
-            cols: 1,
+            cols: 2,
             11: {
                 name: "Quick Sprint",
                 done() { return player.points.gte(100) },
                 tooltip: "Reach 100 distance",
+            },
+		12: {
+                name: "Better shoes",
+                done() { return player.points.gte(2) },
+                tooltip: "Rank up.",
             },
         },
     }
