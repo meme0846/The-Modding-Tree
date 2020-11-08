@@ -142,8 +142,8 @@ addLayer("a", {
             },
 		41: {
                 name: "Parallax Time to the Tenth",
-                done() { return player.points.gte(3.086e16) },
-                tooltip: "Travel 1 parsec",
+                done() { return player.points.gte(3.086e17) },
+                tooltip: "Travel 10 parsecs",
             },
 		42: {
                 name: "Strong Winds",
@@ -172,7 +172,7 @@ addLayer("ro", {
         position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
         startData() { return {
             unlocked: false,
-		points: new Decimal(1),
+		points: new Decimal(0),
         }},
         color: "#4BDC13",
         requires:5e7, // Can be a function that takes requirement increases into account
