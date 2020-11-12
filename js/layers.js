@@ -198,4 +198,17 @@ addLayer("ro", {
             {key: "o", description: "Rocket Reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
         layerShown(){return (player.points.gte(5e7)||player.ro.points.gte(1))},
+	buyables: {
+        rows: 1,
+        cols: 1,
+        11: {
+            display() {return "Rocket fuel"},
+		cost(x) {return Decimal.pow(5,x+2)},
+		canAfford() {return player.ro.points.gte(player.ro.buyables[11].cost())},
+		buy() {
+		player.ro.buyables[11]=player.ro.buyables[11].add(1)
+			player.ro.points=player.ro.points.minus(player.ro.buyables[11].cost())
+		}
+        }
+    }
 })
