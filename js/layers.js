@@ -197,7 +197,7 @@ addLayer("ro", {
         hotkeys: [
             {key: "o", description: "Rocket Reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
-        layerShown(){return (player.points.gte(5e7)||player.ro.points.gte(1))},
+        layerShown(){return (player.points.gte(5e7)||player.ro.points.gte(1)||hasAchievement("a",14))},
 	buyables: {
         rows: 1,
         cols: 1,
