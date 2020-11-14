@@ -203,9 +203,9 @@ addLayer("ro", {
         cols: 1,
         11: {
 		cost() {return Decimal.pow(5,player.ro.buyables[11].pow(1.1)).times(25)},
-            display() {return "Reset your rockets to get 1 rocket fuel. Req: "+player.ro.buyables[11].cost()+" rockets."},
+            display() {return "Reset your rockets to get 1 rocket fuel. Req: "+layers.ro.buyables[11].cost()+" rockets."},
 		
-		canAfford() {return player.ro.points.gte(player.ro.buyables[11].cost())},
+		canAfford() {return player.ro.points.gte(layers.ro.buyables[11].cost())},
 		buy() {
 		player.ro.buyables[11]=player.ro.buyables[11].add(1)
 			player.ro.points=new Decimal(0)
