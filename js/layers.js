@@ -197,5 +197,19 @@ addLayer("ro", {
         hotkeys: [
             {key: "o", description: "Rocket Reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
-        layerShown(){return (player.points.gte(5e7)||player.ro.points.gte(1))},
+        layerShown(){return (player.points.gte(5e7)||player.ro.points.gte(1)||hasAchievement("a",14))},
+	buyables: {
+        rows: 1,
+        cols: 1,
+        11: {
+		cost() {return Decimal.pow(5,player.ro.buyables[11].pow(1.1)).times(25)},
+            display() {return "Reset your rockets to get 1 rocket fuel. Req: "+layers.ro.buyables[11].cost()+" rockets."},
+		
+		canAfford() {return player.ro.points.gte(layers.ro.buyables[11].cost())},
+		buy() {
+		player.ro.buyables[11]=player.ro.buyables[11].add(1)
+			player.ro.points=new Decimal(0)
+		}
+        }
+    }
 })

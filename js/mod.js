@@ -12,8 +12,8 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1 Release",
-	name: "Rockets",
+	num: "0.11 Rocket Fuel",
+	name: "Rocket fuel",
 }
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
@@ -29,7 +29,10 @@ function canGenPoints(){
 	return true
 }
 function getRocketEffect(){
-	let effect = new Decimal(player.ro.points).add(1).log(3)
+	let rockets = new Decimal(player.ro.points)
+	rockets=rockets.plus(player.ro.buyables[11].pow(0.5).div(2))
+	let effect = rockets.add(1).log(3)
+	effect = effect.times(player.ro.buyables[11].add(1).log(2).add(1).pow(0.05))
 	return effect
 }
 // Calculate points/sec!
