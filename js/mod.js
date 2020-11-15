@@ -12,7 +12,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.11 Rocket Fuel",
+	num: "0.2 Rocket Fuel",
 	name: "Rocket fuel",
 }
 
