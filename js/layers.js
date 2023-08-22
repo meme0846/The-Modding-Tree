@@ -11,7 +11,7 @@ addLayer("r", {
         requires:10, // Can be a function that takes requirement increases into account
         resource: "ranks", // Name of prestige currency
 	base: 2,
-        baseResource: "distance", // Name of resource prestige is based on
+        baseResource: "grams", // Name of resource prestige is based on
         baseAmount() {return player.points}, // Get the current amount of baseResource
         type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
         exponent: 2, // Prestige currency exponent
@@ -81,9 +81,9 @@ addLayer("a", {
             rows: 4,
             cols: 4,
             11: {
-                name: "Quick Sprint",
+                name: "100 gram",
                 done() { return player.points.gte(100) },
-                tooltip: "Reach 100 distance",
+                tooltip: "Reach 100 mass",
             },
 		12: {
                 name: "Better Shoes",
@@ -96,14 +96,14 @@ addLayer("a", {
                 tooltip: "Tier up",
             },
 		14: {
-                name: "Off to Space!",
+                name: "Off to Rage!",
                 done() { return player.ro.points.gte(1) },
-                tooltip: "Rocket Reset",
+                tooltip: "Rage Reset",
             },
 		21: {
                 name: "Driving for Hours",
                 done() { return player.points.gte(5e5) },
-                tooltip: "Travel 500 km",
+                tooltip: "Lift 500 kg",
             },
 		22: {
                 name: "Oil change",
@@ -116,17 +116,17 @@ addLayer("a", {
                 tooltip: "Reach tier 3",
             },
 		24: {
-                name: "Blastoff Again?",
+                name: "Rage Again?",
                 done() { return player.ro.points.gte(2) },
-                tooltip: "Get 2 rockets",
+                tooltip: "Get 2 rage powers",
             },
 		31: {
-                name: "Just Under a Saturn Revolution",
+                name: "Just Under a high Revolution",
                 done() { return player.points.gte(1e12) },
-                tooltip: "Travel 1e12 meters",
+                tooltip: "Travel 1e12 grams",
             },
 		32: {
-                name: "Putting in the Fake Fuel",
+                name: "Putting in the Fake Mass",
                 done() { return player.r.points.gte(12) },
                 tooltip: "Reach rank 12",
             },
@@ -136,14 +136,14 @@ addLayer("a", {
                 tooltip: "Reach tier 4",
             },
 		34: {
-                name: "Why fly once when you can fly ten times?",
+                name: "Why lift once when you can Lift ten times?",
                 done() { return player.ro.points.gte(10) },
                 tooltip: "Get 10 rockets",
             },
 		41: {
                 name: "Parallax Time to the Tenth",
-                done() { return player.points.gte(3.086e17) },
-                tooltip: "Travel 10 parsecs",
+                done() { return player.points.gte(2.9e46) },
+                tooltip: "Travel 10 MMWG",
             },
 		42: {
                 name: "Strong Winds",
@@ -158,7 +158,7 @@ addLayer("a", {
 		44: {
                 name: "Now this is just pointless.",
                 done() { return player.ro.points.gte(100000) },
-                tooltip: "Get 1e5 rockets",
+                tooltip: "Get 1e5 rage powers",
             },
         },
         midsection: [
@@ -167,14 +167,14 @@ addLayer("a", {
     }, 
 )
 addLayer("ro", {
-        name: "rockets", // This is optional, only used in a few places, If absent it just uses the layer id.
-        symbol: "RO", // This appears on the layer's node. Default is the id with the first letter capitalized
+        name: "rage", // This is optional, only used in a few places, If absent it just uses the layer id.
+        symbol: "RP", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
         startData() { return {
             unlocked: false,
 		points: new Decimal(0),
         }},
-        color: "#4BDC13",
+        color: "red",
         requires:5e7, // Can be a function that takes requirement increases into account
 	branches:["t"],
         resource: "rockets", // Name of prestige currency
@@ -195,7 +195,7 @@ addLayer("ro", {
         },
         row: 2, // Row the layer is in on the tree (0 is the first row)
         hotkeys: [
-            {key: "o", description: "Rocket Reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+            {key: "o", description: "Rage Reset", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
         layerShown(){return (player.points.gte(5e7)||player.ro.points.gte(1)||hasAchievement("a",14))},
 	buyables: {
@@ -203,7 +203,7 @@ addLayer("ro", {
         cols: 1,
         11: {
 		cost() {return Decimal.pow(5,player.ro.buyables[11].pow(1.1)).times(25)},
-            display() {return "Reset your rockets to get 1 rocket fuel. Req: "+layers.ro.buyables[11].cost()+" rockets."},
+            display() {return "Reset your rage powers to get 1 tickspeed. Req: "+layers.ro.buyables[11].cost()+" rockets."},
 		
 		canAfford() {return player.ro.points.gte(layers.ro.buyables[11].cost())},
 		buy() {
